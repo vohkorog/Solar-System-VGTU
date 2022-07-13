@@ -10,10 +10,9 @@
 #include <cmath>
 
 unsigned int day = 0;
-
 double rX=0;
 double rY=15;
-double p = 15;
+double p = true;
 
 GLfloat pos0[] = { 1.0, 1.0, 0.0, 0.0 };
 GLfloat ambientColor0[] = { 0.1, 0.1, 0.1, 0.0 };
@@ -25,22 +24,35 @@ void display() {
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseColor0);
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambientColor0);
     glLightfv(GL_LIGHT0, GL_POSITION, pos0);
-        //sun
     glColorMaterial(GL_FRONT, GL_AMBIENT);
-    glColor3f(1.0, 1.0, 0.0);
-    glutWireSphere(2.0, p, p);
     day += 1;
         if (day > std::numeric_limits<unsigned int>::max()) {
             day = 0;
         }
     glRotatef( rX, 1.0, 0.0, 0.0 );
+        //sun
+    glPushMatrix();
+    glRotatef((GLfloat)day*0.09, 0.0, 1.0, 0.0);
+    glColor3f(1.0, 1.0, 0.0);
+    if(p == true){
+    glutWireSphere(2, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(2, 100, 100);
+    }
+    glPopMatrix();
         //first planet
     glPushMatrix();
     glRotatef((GLfloat)day*1.6, 0.0, 1.0, 0.0);
     glTranslatef (2.5, 0.0, 0.0);
     glRotatef((GLfloat)day*1.6, 0.0, 1.0, 0.0);
     glColor3f(1, 0, 0);
-    glutWireSphere(0.038, p, p);
+    if(p == true){
+    glutWireSphere(0.038, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.038, 100, 100);
+    }
     glPopMatrix();
         //second planet
     glPushMatrix();
@@ -48,7 +60,12 @@ void display() {
     glTranslatef (3.5, 0.0, 0.0);
     glRotatef((GLfloat)day * 1.17, 0.0, 1.0, 0.0);
     glColor3f(0.0, 1.0, 0);
-    glutWireSphere(0.095, p, p);
+    if(p == true){
+    glutWireSphere(0.095, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.095, 100, 100);
+    }
     glPopMatrix();
         //third planet
     glPushMatrix();
@@ -56,12 +73,22 @@ void display() {
     glTranslatef (4.5, 0.0, 0.0);
     glRotatef((GLfloat)day, 0.0, 1.0, 0.0);
     glColor3f(0, 0.0, 1.0);
-    glutWireSphere(0.1, p, p);
-        //moon
+    if(p == true){
+    glutWireSphere(0.1, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.1, 100, 100);
+    }
+    //moon
     glRotatef((GLfloat)day*0.8, 0.0, 1.0, 0.0);
     glTranslatef (0.5, 0.0, 0.0);
     glColor3f(0, 0.0, 1.0);
-    glutWireSphere(0.08, p, p);
+    if(p == true){
+    glutWireSphere(0.1, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.1, 100, 100);
+    }
     glPopMatrix();
         //fourth planet
     glPushMatrix();
@@ -69,7 +96,12 @@ void display() {
     glTranslatef (5.5, 0.0, 0.0);
     glRotatef((GLfloat)day*0.8, 0.0, 1.0, 0.0);
     glColor3f(1.0, 0.0, 0.5);
-    glutWireSphere(0.053, p, p);
+    if(p == true){
+    glutWireSphere(0.053, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.053, 100, 100);
+    }
     glPopMatrix();
         //fifth planet
     glPushMatrix();
@@ -77,7 +109,12 @@ void display() {
     glTranslatef (8.5, 0.0, 0.0);
     glRotatef((GLfloat)day*0.43, 0.0, 1.0, 0.0);
     glColor3f(1.0, 0.0, 1.0);
-    glutWireSphere(1.097, p, p);
+    if(p == true){
+    glutWireSphere(1.097, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(1.097, 100, 100);
+    }
     glPopMatrix();
         //sixth planet
     glPushMatrix();
@@ -85,7 +122,12 @@ void display() {
     glTranslatef (12.5, 0.0, 0.0);
     glRotatef((GLfloat)day*0.32, 0.0, 1.0, 0.0);
     glColor3f(0.0, 1.0, 1.0);
-    glutWireSphere(0.914, p, p);
+    if(p == true){
+    glutWireSphere(0.914, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.914, 100, 100);
+    }
     glPopMatrix();
         //seventh planet
     glPushMatrix();
@@ -93,7 +135,12 @@ void display() {
     glTranslatef (15, 0.0, 0.0);
     glRotatef((GLfloat)day*0.228, 0.0, 1.0, 0.0);
     glColor3f(0.2, 0.5, 0.0);
-    glutWireSphere(0.398, p, p);
+    if(p == true){
+    glutWireSphere(0.398, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.398, 100, 100);
+    }
     glPopMatrix();
         //eighth planet
     glPushMatrix();
@@ -101,7 +148,12 @@ void display() {
     glTranslatef (17, 0.0, 0.0);
     glRotatef((GLfloat)day*0.182, 0.0, 1.0, 0.0);
     glColor3f(0.0, 0.128, 0.255);
-    glutWireSphere(0.38, p, p);
+    if(p == true){
+    glutWireSphere(0.38, 15, 15);
+    }
+    if(p == false){
+    glutSolidSphere(0.38, 100, 100);
+    }
     glPopMatrix();
     
     glFlush();
@@ -125,16 +177,12 @@ void reshape(GLint w, GLint h) {
 }
 void MouseFunc(int button, int state, int x, int y){
     if (button == GLUT_LEFT_BUTTON) {
-        p+=241;
-        if (p>=256){
-            p=256;
-        }
+        p=true;
+        
     }
     if (button == GLUT_RIGHT_BUTTON){
-        p-=200;
-        if(p<=0){
-            p = 15;
-        }
+        p=false;
+        
     }
 }
 
