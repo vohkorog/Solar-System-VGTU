@@ -1,1 +1,1 @@
-# Solar-System-VGTU
+# OpenGL-Solar-System-VGTU
